@@ -109,6 +109,7 @@ public class BoardDAO {
         List<BoardVO> boardList = new ArrayList<BoardVO>();
         try {
             conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_LIST);
             /*
             if(vo.getSearchCondition().equals("TITLE")) {
                 stmt = conn.prepareStatement(BOARD_LIST_T);
