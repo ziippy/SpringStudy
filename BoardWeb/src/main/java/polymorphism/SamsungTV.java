@@ -1,5 +1,12 @@
 package polymorphism;
 
+import org.springframework.stereotype.Component;
+
+// component-scan 에 의해 로딩되도록 @Component 어노테이션 설정
+// 단, 기본 생성자가 있어야지만 컨테이너가 객체를 생성할 수 있음
+//@Component  -> 이 경우 bean 명은 samsungTV 로 된다.
+//@Component("tv")
+@Component
 public class SamsungTV implements TV {
 
 	private Speaker speaker;
