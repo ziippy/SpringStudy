@@ -43,4 +43,36 @@ public class BoardDAO {
 		}
 	}
 	
+	// 글 수정
+	public void updateBoard(BoardVO vo) {
+		System.out.println("===> JDBC로 updateBoard 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(BOARD_UPDATE);
+			stmt.setString(1,  vo.getTitle());
+			stmt.setString(2,  vo.getContent());
+			stmt.setInt(3,  vo.getSeq());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
+	// 글 삭제
+	public void deleteBoard(BoardVO vo) {
+		System.out.println("===> JDBC로 deleteBoard 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(BOARD_DELETE);
+			stmt.setInt(1,  vo.getSeq());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
 }
