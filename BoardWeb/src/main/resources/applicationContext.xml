@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+	<bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="singleton"/>
+	-->
+	<!--
+	<bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod"> 
+	-->
+	<bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" p:speaker-ref="apple" p:price="100000">
+		<!-- 생성자 injection 방식 -->
+		<!--
+		<constructor-arg index="0" ref="apple"></constructor-arg>
+		<constructor-arg index="1" value="100000"></constructor-arg>
+		-->
+		
+		<!-- setter 방식 -->
+		<!-- 
+		<property name="speaker" ref="apple"></property>
+		<property name="price" value="100000"></property>
+		-->
+	</bean>
+	
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+	
+	<bean id="apple" class="polymorphism.AppleSpeaker"></bean>
+	
+	
+	<bean id="collectionBean" class="com.springbook.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<!-- list 로 주입하면 중복 허용 -->
+			<!--
+			<list>
+				<value>서울시 강남구</value>
+				<value>서울시 도봉구</value>
+				<value>서울시 도봉구</value>
+			</list>
+			-->
+			
+			<!-- set 으로 주입하면 중복 불허 -->
+			<set value-type="java.lang.String">
+				<value>서울시 강남구</value>
+				<value>서울시 도봉구</value>
+				<value>서울시 도봉구</value>
+			</set>
+		</property>
+		
+		<property name="addressMap">
+			<map>
+				<entry>
+					<key><value>홍길동</value></key>
+					<value>서울시 강남구</value>
+				</entry>
+				<entry>
+					<key><value>심청이</value></key>
+					<value>서울시 도봉구</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>
