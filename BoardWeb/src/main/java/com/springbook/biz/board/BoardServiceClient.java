@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.springbook.biz.impl.BoardService;
+import com.springbook.biz.board.impl.BoardService;
 
 public class BoardServiceClient {
 	
@@ -22,9 +22,10 @@ public class BoardServiceClient {
 		vo.setTitle("임시 제목");
 		vo.setWriter("홍길동");
 		vo.setContent("블라블라디보스톡");
-		boardService.insertBoard(vo);
+		//boardService.insertBoard(vo);
 		
 		// 4. 글 목록 검색 기능
+		vo = new BoardVO();
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		for (BoardVO board : boardList) {
 			System.out.println(board.toString());

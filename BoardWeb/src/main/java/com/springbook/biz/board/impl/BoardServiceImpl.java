@@ -1,4 +1,4 @@
-package com.springbook.biz.impl;
+package com.springbook.biz.board.impl;
 
 import java.util.List;
 
@@ -11,7 +11,9 @@ import com.springbook.biz.board.BoardVO;
 public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
-	private BoardDAO boardDAO;
+	//private BoardDAO boardDAO;
+	//private BoardDAOSpring boardDAO;
+	private BoardDAOSpring2 boardDAO;
 
 	@Override
 	public void insertBoard(BoardVO vo) {

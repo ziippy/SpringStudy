@@ -3,8 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- 
 	<bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="singleton"/>
@@ -53,6 +57,31 @@
 	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"></bean>
 	-->
 	
+	<!-- AOP -->
+	<!-- 
+	<bean id="log" class="com.springbook.biz.common.LogAdvice">
+	</bean>
+	
+	<aop:config>
+		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>
+		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))"/>
+		<aop:pointcut id="boardPointcut" expression="execution(* com.springbook.biz..*Impl.get*(com.springbook.biz.board.BoardVO))"/>
+		
+		<aop:aspect ref="log">
+			<aop:after-returning method="printLog3" pointcut-ref="boardPointcut" returning="returnObj"/>
+		</aop:aspect>
+	</aop:config>
+	-->
+	
+	<!-- AOP 자동 인식 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!-- Transaction 설정 -->
+	<!-- 
+	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	-->
 	
 	
 	
@@ -94,4 +123,43 @@
 		</property>
 	</bean>
 	-->
+	
+	<!-- DataSource 설정 -->
+	<context:property-placeholder location="classpath:config/database.properties"></context:property-placeholder>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- 
+		<property name="driverClassName" value="org.h2.Driver"></property>
+		<property name="url" value="jdbc:h2:tcp://localhost/~/test"></property>
+		<property name="username" value="sa"></property>
+		<property name="password" value=""></property>
+		-->
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- Spring JDBC 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- Transaction 설정 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="txPointcut" expression="execution(* com.springbook.biz..*(..))"/>
+		
+		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+	</aop:config>
 </beans>
