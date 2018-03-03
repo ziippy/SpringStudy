@@ -2,7 +2,9 @@ package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
@@ -10,7 +12,8 @@ import com.springbook.biz.board.impl.BoardDAO;
 public class UpdateBoardController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	//public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		//1. 사용자 입력 정보 추출
 		String seq = request.getParameter("seq");
@@ -28,7 +31,11 @@ public class UpdateBoardController implements Controller {
 		
 		// 3. 화면 네비게이션
 		//response.sendRedirect("getBoardList.do");
-		return "getBoardList.do";
+		//return "getBoardList.do";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getBoardList.do");
+		return mav;
 	}
 
 }
