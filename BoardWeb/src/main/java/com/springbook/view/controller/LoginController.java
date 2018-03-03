@@ -3,13 +3,17 @@ package com.springbook.view.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
 
 public class LoginController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	//public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		// 1. 사용자 입력 정보 추출
 		String id = request.getParameter("id");
@@ -24,6 +28,7 @@ public class LoginController implements Controller {
 		UserVO user = userDAO.getUser(vo);
 		
 		// 3. 화면 네비게이션
+		/*
 		if (user != null) {
 			//response.sendRedirect("getBoardList.do");
 			return "getBoardList.do";
@@ -31,6 +36,16 @@ public class LoginController implements Controller {
 			//response.sendRedirect("login.jsp");
 			return "login";
 		}
+		*/
+		
+		// 3. 화면 네비게이션 - 스프링 Controller 이용 시
+		ModelAndView mav = new ModelAndView();
+		if (user != null) {
+			mav.setViewName("redirect:getBoardList.do");
+		} else {
+			mav.setViewName("redirect:login.jsp");
+		}
+		return mav;
 	}
 
 }

@@ -52,7 +52,7 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println(path);
 		
 		// 2. HandlerMapping 을 통해 path 에 해당하는 Controller 를 검색한다.
-		Controller ctrl = handlerMapping.getController(path);
+		MyController ctrl = handlerMapping.getController(path);
 		
 		// 3. 검색된 Controller 를 실행
 		String viewName = ctrl.handleRequest(request, response);
