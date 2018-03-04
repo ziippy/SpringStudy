@@ -32,32 +32,32 @@ public class BoardDAOSpring extends JdbcDaoSupport {
 	// CRUD 기능의 메소드 구현
 	// 글 등록
 	public void insertBoard(BoardVO vo) {
-		System.out.println("===> Spring JDBC로 insertBoard 처리");
+		System.out.println("===> BoardDAOSpring - Spring JDBC로 insertBoard 처리");
 		getJdbcTemplate().update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
 	}
 
 	// 글 수정
 	public void updateBoard(BoardVO vo) {
-		System.out.println("===> Spring JDBC로 updateBoard 처리");
+		System.out.println("===> BoardDAOSpring - Spring JDBC로 updateBoard 처리");
 		getJdbcTemplate().update(BOARD_UPDATE, vo.getTitle(), vo.getContent(), vo.getSeq());
 	}
 
 	// 글 삭제
 	public void deleteBoard(BoardVO vo) {
-		System.out.println("===> Spring JDBC로 deleteBoard 처리");
+		System.out.println("===> BoardDAOSpring - Spring JDBC로 deleteBoard 처리");
 		getJdbcTemplate().update(BOARD_DELETE, vo.getSeq());
 	}
 
 	// 글 상세 조회
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("===> Spring JDBC로 getBoard 처리");
+		System.out.println("===> BoardDAOSpring - Spring JDBC로 getBoard 처리");
 		Object[] args = {vo.getSeq()};
 		return getJdbcTemplate().queryForObject(BOARD_GET, args, new BoardRowMapper());
 	}
 
 	// 글 목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> Spring JDBC로 getBoardList 기능 처리");
+		System.out.println("===> BoardDAOSpring - Spring JDBC로 getBoardList 기능 처리");
 		return getJdbcTemplate().query(BOARD_LIST, new BoardRowMapper());
 	}
 }

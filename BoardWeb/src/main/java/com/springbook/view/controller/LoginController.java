@@ -55,7 +55,7 @@ public class LoginController {
 		if (userDAO.getUser(vo) != null) {
 			return "redirect:getBoardList.do";
 		} else {
-			return "redirect:login.jsp";
+			return "redirect:login.do";
 		}
 	}
 

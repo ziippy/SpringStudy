@@ -13,7 +13,9 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	//private BoardDAO boardDAO;
 	//private BoardDAOSpring boardDAO;
-	private BoardDAOSpring2 boardDAO;
+	//private BoardDAOSpring2 boardDAO;
+	//private BoardDAOSpring3 boardDAO;
+	private BoardDAOSpring4 boardDAO;
 
 	@Override
 	public void insertBoard(BoardVO vo) {

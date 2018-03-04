@@ -34,7 +34,7 @@ public class UserController {
 			session.setAttribute("userName", user.getName());
 			return "redirect:getBoardList.do";
 		} else {
-			return "redirect:login.jsp";
+			return "redirect:login.do";
 		}
 	}
 	
@@ -42,6 +42,6 @@ public class UserController {
 	public String logout(HttpSession session) {
 		System.out.println("로그아웃 수행");
 		session.invalidate();
-		return "redirect:login.jsp";
+		return "redirect:login.do";
 	}
 }
