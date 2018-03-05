@@ -45,11 +45,11 @@ public class LogAdvice {
 		BoardVO vo = (BoardVO)args[0];
 		System.out.println("[LogAdvice][printLog3] ..... " + method + ", " + vo.toString());
 		
-		if (returnObj != null) {
+		/*if (returnObj != null) {
 			List<BoardVO> list = (List)returnObj;
 			//for (Board board : list) {
 				System.out.println("[LogAdvice][pringLog3] ..... count: " + list.size());
 			//}
-		}
+		}*/
 	}
 }
