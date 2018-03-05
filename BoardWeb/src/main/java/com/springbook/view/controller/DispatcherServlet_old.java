@@ -43,20 +43,18 @@ public class DispatcherServlet_old extends HttpServlet {
 	}
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 1. Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ» path Á¤º¸¸¦ ÃßÃâÇÑ´Ù.
+		// 1. í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ path ì •ë³´ë¥¼ ì¶”ì¶œí•œë‹¤.
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
 		
-		// 2. Å¬¶óÀÌ¾ğÆ® ¿äÃ» path ¿¡ ´Ù¶ó ÀûÀıÈ÷ ºĞ±âÃ³¸® ÇÑ´Ù.
+		// 2. í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ path ì— ë‹¤ë¼ ì ì ˆíˆ ë¶„ê¸°ì²˜ë¦¬ í•œë‹¤.
 		if (path.equals("/login.do")) {
-			System.out.println("login Ã³¸®");
+			System.out.println("login Ã³ï¿½ï¿½");
 			
-			// 1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			
-			// 2. DB ¿¬µ¿ Ã³¸®
 			UserVO vo = new UserVO();
 			vo.setId(id);
 			vo.setPassword(password);
@@ -64,30 +62,25 @@ public class DispatcherServlet_old extends HttpServlet {
 			UserDAO userDAO = new UserDAO();
 			UserVO user = userDAO.getUser(vo);
 			
-			// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
 			if (user != null) {
 				response.sendRedirect("getBoardList.do");
 			} else {
 				response.sendRedirect("login.jsp");
 			}
 		} else if (path.equals("/logout.do")) {
-			System.out.println("logout Ã³¸®");
+			System.out.println("logout Ã³ï¿½ï¿½");
 			
-			// 1. ºê¶ó¿ìÀú¿Í ¿¬°áµÈ ¼¼¼Ç °´Ã¼¸¦ °­Á¦ Á¾·áÇÑ´Ù.
 			HttpSession session = request.getSession();
 			session.invalidate();
 
-			// 2. ¼¼¼Ç Á¾·á ÈÄ, ¸ŞÀÎ È­¸éÀ¸·Î ÀÌµ¿
 			response.sendRedirect("login.jsp");
 		} else if (path.equals("/insertBoard.do")) {
-			System.out.println("insertBoard Ã³¸®");
+			System.out.println("insertBoard Ã³ï¿½ï¿½");
 			
-			//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
 			String title = request.getParameter("title");
 			String writer = request.getParameter("writer");
 			String content = request.getParameter("content");
 			
-			// 2. DB ¿¬µ¿ Ã³¸®
 			BoardVO vo = new BoardVO();
 			vo.setTitle(title);
 			vo.setWriter(writer);
@@ -96,17 +89,14 @@ public class DispatcherServlet_old extends HttpServlet {
 			BoardDAO boardDAO = new BoardDAO();
 			boardDAO.insertBoard(vo);
 			
-			// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
 			response.sendRedirect("getBoardList.do");
 		} else if (path.equals("/updateBoard.do")) {
-			System.out.println("updateBoard Ã³¸®");
+			System.out.println("updateBoard Ã³ï¿½ï¿½");
 			
-			//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
 			String seq = request.getParameter("seq");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
-			// 2. DB ¿¬µ¿ Ã³¸®
 			BoardVO vo = new BoardVO();
 			vo.setSeq(Integer.parseInt(seq));
 			vo.setTitle(title);
@@ -115,50 +105,40 @@ public class DispatcherServlet_old extends HttpServlet {
 			BoardDAO boardDAO = new BoardDAO();
 			boardDAO.updateBoard(vo);
 			
-			// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
 			response.sendRedirect("getBoardList.do");
 		} else if (path.equals("/deleteBoard.do")) {
-			System.out.println("deleteBoard Ã³¸®");
+			System.out.println("deleteBoard Ã³ï¿½ï¿½");
 			
-			//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
 			String seq = request.getParameter("seq");
 			
-			// 2. DB ¿¬µ¿ Ã³¸®
 			BoardVO vo = new BoardVO();
 			vo.setSeq(Integer.parseInt(seq));
 			
 			BoardDAO boardDAO = new BoardDAO();
 			boardDAO.deleteBoard(vo);
 			
-			// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
 			response.sendRedirect("getBoardList.do");
 		} else if (path.equals("/getBoard.do")) {
-			System.out.println("getBoard Ã³¸®");
+			System.out.println("getBoard Ã³ï¿½ï¿½");
 			
-			// 1. °Ë»öÇÒ °Ô½Ã¹° ¹øÈ£ ÃßÃâ
 			String seq = request.getParameter("seq");
 
-			// 2. DB ¿¬µ¿ Ã³¸®
 			BoardVO vo = new BoardVO();
 			vo.setSeq(Integer.parseInt(seq));
 			
 			BoardDAO boardDAO = new BoardDAO();
 			BoardVO board = boardDAO.getBoard(vo);
 			
-			// 3. °Ë»ö °á°ú¸¦ ¼¼¼Ç¿¡ ÀúÀåÇÏ°í ¸ñ·Ï È­¸éÀ¸·Î ÀÌµ¿ÇÑ´Ù.
 			HttpSession session = request.getSession();
 			session.setAttribute("board", board);
 			response.sendRedirect("getBoard.jsp");
 		} else if (path.equals("/getBoardList.do")) {
-			System.out.println("getBoardList Ã³¸®");
+			System.out.println("getBoardList Ã³ï¿½ï¿½");
 			
-			// 1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
-			// 2. DB ¿¬µ¿ Ã³¸®
 			BoardVO vo = new BoardVO();
 			BoardDAO boardDAO = new BoardDAO();
 			List<BoardVO> boardList = boardDAO.getBoardList(vo);
 			
-			// 3. °Ë»ö °á°ú¸¦ ¼¼¼Ç¿¡ ÀúÀåÇÏ°í ¸ñ·Ï È­¸éÀ¸·Î ÀÌµ¿ÇÑ´Ù.
 			HttpSession session = request.getSession();
 			session.setAttribute("boardList", boardList);
 			response.sendRedirect("getBoardList.jsp");

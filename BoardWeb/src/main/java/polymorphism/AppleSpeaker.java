@@ -3,13 +3,12 @@ package polymorphism;
 import org.springframework.stereotype.Component;
 
 //@Component("apple")
-//´Ù¸¥ Å¬·¡½º¿¡¼­ Speaker ¿¡ ´ëÇØ¼­ Autowired¸¸ ¾²°íÀÚ ÇÒ °æ¿ì¿¡´Â Å¬·¡½º¿¡ ¼³Á¤µÈ @Component ¸¦ »èÁ¦ÇÏ°í
-//applicationContext.xml ¿¡ ´Ù¸¥ ÀÛ¾÷À» ÇØ¾ß ÇÑ´Ù.
+////applicationContext.xml
 public class AppleSpeaker implements Speaker {
 
 	public AppleSpeaker() {
 		// TODO Auto-generated constructor stub
-		System.out.println("AppleSpeaker - °´Ã¼ »ı¼º");
+		System.out.println("AppleSpeaker - ê°ì²´ ìƒì„±");
 	}
 
 	@Override

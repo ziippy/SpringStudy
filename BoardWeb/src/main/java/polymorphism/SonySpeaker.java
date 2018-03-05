@@ -3,12 +3,12 @@ package polymorphism;
 import org.springframework.stereotype.Component;
 
 //@Component("sony")
-//´Ù¸¥ Å¬·¡½º¿¡¼­ Speaker ¿¡ ´ëÇØ¼­ Autowired¸¸ ¾²°íÀÚ ÇÒ °æ¿ì¿¡´Â Å¬·¡½º¿¡ ¼³Á¤µÈ @Component ¸¦ »èÁ¦ÇÏ°í
-//applicationContext.xml ¿¡ ´Ù¸¥ ÀÛ¾÷À» ÇØ¾ß ÇÑ´Ù.
+//ë‹¤ë¥¸ í´ë˜ìŠ¤ì—ì„œ Speaker ì— ëŒ€í•´ì„œ Autowiredë§Œ ì“°ê³ ì í•  ê²½ìš°ì—ëŠ” í´ë˜ìŠ¤ì— ì„¤ì •ëœ @Component ë¥¼ ì‚­ì œí•˜ê³ 
+//applicationContext.xml ì— ë‹¤ë¥¸ ì‘ì—…ì„ í•´ì•¼ í•œë‹¤.
 public class SonySpeaker implements Speaker {
 	
 	public SonySpeaker() {
-		System.out.println("SonySpeaker - °´Ã¼ »ı¼º");
+		System.out.println("SonySpeaker - ê°ì²´ ìƒì„±");
 	}
 	
 	@Override

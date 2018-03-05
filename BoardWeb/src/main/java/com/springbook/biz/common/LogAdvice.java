@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.springbook.biz.board.BoardVO;
 
-// @Service -> <aop:aspectj-autoproxy> 에 의해서 인식되기 위해 선언
+// @Service -> <aop:aspectj-autoproxy> 
 // @Aspect -> Aspect = Pointcut + Advice
 @Service
 @Aspect

@@ -2,9 +2,9 @@ package polymorphism;
 
 import org.springframework.stereotype.Component;
 
-// component-scan ¿¡ ÀÇÇØ ·ÎµùµÇµµ·Ï @Component ¾î³ëÅ×ÀÌ¼Ç ¼³Á¤
-// ´Ü, ±âº» »ı¼ºÀÚ°¡ ÀÖ¾î¾ßÁö¸¸ ÄÁÅ×ÀÌ³Ê°¡ °´Ã¼¸¦ »ı¼ºÇÒ ¼ö ÀÖÀ½
-//@Component  -> ÀÌ °æ¿ì bean ¸íÀº samsungTV ·Î µÈ´Ù.
+//component-scan ì— ì˜í•´ ë¡œë”©ë˜ë„ë¡ @Component ì–´ë…¸í…Œì´ì…˜ ì„¤ì •
+//ë‹¨, ê¸°ë³¸ ìƒì„±ìê°€ ìˆì–´ì•¼ì§€ë§Œ ì»¨í…Œì´ë„ˆê°€ ê°ì²´ë¥¼ ìƒì„±í•  ìˆ˜ ìˆìŒ
+//@Component  -> ì´ ê²½ìš° bean ëª…ì€ samsungTV ë¡œ ëœë‹¤.
 //@Component("tv")
 @Component
 public class SamsungTV implements TV {
@@ -13,39 +13,39 @@ public class SamsungTV implements TV {
 	private int price;
 	
 	public SamsungTV() {
-		System.out.println("SamsungTV - °´Ã¼ »ı¼º");
+		System.out.println("SamsungTV - ê°ì²´ ìƒì„±");
 	}
 	
 	public SamsungTV(Speaker speaker) {
-		System.out.println("SamsungTV - °´Ã¼ »ı¼º (with speaker)");
+		System.out.println("SamsungTV - ê°ì²´ ìƒì„± (with speaker)");
 		
 		this.speaker = speaker;
 		this.price = 0;
 	}
 	
 	public SamsungTV(Speaker speaker, int price) {
-		System.out.println("SamsungTV - °´Ã¼ »ı¼º (with speaker, price: " + price +")");
+		System.out.println("SamsungTV - ê°ì²´ ìƒì„± (with speaker, price: " + price +")");
 		
 		this.speaker = speaker;
 		this.price = price;
 	}
 
 	public void setSpeaker(Speaker speaker) {
-		System.out.println("SamsungTV - speaker ¼³Á¤");
+		System.out.println("SamsungTV - speaker ì„¤ì •");
 		this.speaker = speaker;
 	}
 
 	public void setPrice(int price) {
-		System.out.println("SamsungTV - price ¼³Á¤ (" + price + ")");
+		System.out.println("SamsungTV - price (" + price + ")");
 		this.price = price;
 	}
 
 	public void initMethod() {
-		System.out.println("SamsungTV - °´Ã¼ ÃÊ±âÈ­ ÀÛ¾÷ Ã³¸®");
+		System.out.println("SamsungTV - ê°ì²´ ì´ˆê¸°í™” ì‘ì—… ì²˜ë¦¬");
 	}
 	
 	public void destroyMethod() {
-		System.out.println("SamsungTV - °´Ã¼ »èÁ¦ Àü Ã³¸®ÇÒ ·ÎÁ÷ Ã³¸®");
+		System.out.println("SamsungTV - ì‚­ì œ ì „ ì²˜ë¦¬í•  ë¡œì§ ì²˜ë¦¬");
 	}
 	
 	@Override

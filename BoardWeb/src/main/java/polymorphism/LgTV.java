@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 public class LgTV implements TV {
 	
 	@Autowired
-	//@Qualifier("sony")	¸¸¾à Speaker ¿¡ ÇØ´çÇÏ´Â bean ÀÌ ¿©·¯ °³ ÀÖÀ» °æ¿ì¿¡´Â ÀÌ¸¦ ÀÌ¿ëÇÏ¿© 1°³°¡ ÁöÁ¤µÇµµ·Ï ÇÑ´Ù.
-	//Autowired¸¸ ¾²°íÀÚ ÇÒ °æ¿ì¿¡´Â SonySpeaker, AppleSpeaker Å¬·¡½º¿¡ ¼³Á¤µÈ @Component ¸¦ »èÁ¦ÇÏ°í
-	//applicationContext.xml ¿¡ ´Ù¸¥ ÀÛ¾÷À» ÇØ¾ß ÇÑ´Ù.
+	//@Qualifier("sony")
+	//Autowired
+	//applicationContext.xml
 	private Speaker speaker;
 	
 	public LgTV() {
-		System.out.println("LgTV - °´Ã¼ »ı¼º");
+		System.out.println("LgTV - ê°ì²´ ìƒì„±");
 	}
 	
 	@Override

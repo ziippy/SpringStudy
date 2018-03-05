@@ -17,10 +17,10 @@ public class DeleteBoardController {
 	public String deleteBoard(BoardVO vo, BoardDAO boardDAO) {
 		
 		/*
-		//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
+		//1. ì‚¬ìš©ì ì…ë ¥ ì •ë³´ ì¶”ì¶œ
 		String seq = request.getParameter("seq");
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		BoardVO vo = new BoardVO();
 		vo.setSeq(Integer.parseInt(seq));
 		
@@ -28,7 +28,7 @@ public class DeleteBoardController {
 		boardDAO.deleteBoard(vo);
 		*/
 		
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		//response.sendRedirect("getBoardList.do");
 		//return "getBoardList.do";
 		

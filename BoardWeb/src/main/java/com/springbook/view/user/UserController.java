@@ -15,7 +15,7 @@ public class UserController {
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
-		System.out.println("로그인 화면으로 이동");
+		System.out.println("login - GET");
 		vo.setId("test");
 		vo.setPassword("test123");
 		return "login.jsp";
@@ -23,10 +23,10 @@ public class UserController {
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
-		System.out.println("로그인 수행");
+		System.out.println("login - POST");
 		
 		if (vo.getId() == null || vo.getId().isEmpty() == true) {
-			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+			throw new IllegalArgumentException("user not found");
 		}
 		
 		UserVO user = userDAO.getUser(vo); 
@@ -40,7 +40,7 @@ public class UserController {
 	
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
-		System.out.println("로그아웃 수행");
+		System.out.println("logout");
 		session.invalidate();
 		return "redirect:login.do";
 	}

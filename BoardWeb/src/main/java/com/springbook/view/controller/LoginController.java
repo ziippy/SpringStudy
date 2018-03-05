@@ -17,11 +17,9 @@ public class LoginController {
 	public String login(UserVO vo, UserDAO userDAO) {
 		
 		/*
-		// 1. 사용자 입력 정보 추출
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		// 2. DB 연동 처리
 		UserVO vo = new UserVO();
 		vo.setId(id);
 		vo.setPassword(password);
@@ -30,7 +28,6 @@ public class LoginController {
 		UserVO user = userDAO.getUser(vo);
 		*/
 		
-		// 3. 화면 네비게이션
 		/*
 		if (user != null) {
 			//response.sendRedirect("getBoardList.do");
@@ -41,7 +38,6 @@ public class LoginController {
 		}
 		*/
 		
-		// 3. 화면 네비게이션 - 스프링 Controller 이용 시
 		/*
 		ModelAndView mav = new ModelAndView();
 		if (user != null) {

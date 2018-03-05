@@ -9,7 +9,7 @@ public class CommonExceptionHandler {
 
 	@ExceptionHandler(ArithmeticException.class)
 	public ModelAndView handleArithmeticException(Exception e) {
-		System.out.println("ArithmeticException 贸府");
+		System.out.println("ArithmeticException");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
@@ -20,7 +20,7 @@ public class CommonExceptionHandler {
 	
 	@ExceptionHandler(NullPointerException.class)
 	public ModelAndView handleNullPointerException(Exception e) {
-		System.out.println("NullPointerException 贸府");
+		System.out.println("NullPointerException");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
@@ -31,7 +31,7 @@ public class CommonExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception e) {
-		System.out.println("Exception 贸府");
+		System.out.println("Exception");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);

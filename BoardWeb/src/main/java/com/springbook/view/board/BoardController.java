@@ -28,8 +28,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/insertBoard.do")
 	//public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
-	public String insertBoard(BoardVO vo) throws IOException {		// BoardDAO ¸¦ Á÷Á¢ »ç¿ëÇÏ´Â °ÍÀ» ÇÇÇÏ¶ó
-		// ÆÄÀÏ ¾÷·Îµå Ã³¸®
+	public String insertBoard(BoardVO vo) throws IOException {
 		MultipartFile uploadFile = vo.getUploadFile();
 		if (uploadFile != null && !uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
@@ -59,8 +58,8 @@ public class BoardController {
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("Á¦¸ñ", "TITLE");
-		conditionMap.put("³»¿ë", "CONTENT");
+		conditionMap.put("ì œëª©", "TITLE");
+		conditionMap.put("ë‚´ìš©", "CONTENT");
 		return conditionMap;
 	}
 	

@@ -22,7 +22,7 @@ public class DispatcherServlet extends HttpServlet {
 	private HandlerMapping handlerMapping;
 	private ViewResolver viewResolver;
        
-    // init ÇÔ¼ö´Â ¼­ºí¸´ °´Ã¼°¡ »ı¼ºµÈ ÈÄ¿¡ ¸â¹öº¯¼ö¸¦ ÃÊ±âÈ­ÇÏ±â À§ÇØ ÀÚµ¿À¸·Î ½ÇÇàµÊ
+    // init í•¨ìˆ˜ëŠ” ì„œë¸”ë¦¿ ê°ì²´ê°€ ìƒì„±ëœ í›„ì— ë©¤ë²„ë³€ìˆ˜ë¥¼ ì´ˆê¸°í™”í•˜ê¸° ìœ„í•´ ìë™ìœ¼ë¡œ ì‹¤í–‰ë¨
     public void init() throws ServletException {
         handlerMapping = new HandlerMapping();
         viewResolver = new ViewResolver();
@@ -46,18 +46,14 @@ public class DispatcherServlet extends HttpServlet {
 	}
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 1. Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ» path Á¤º¸¸¦ ÃßÃâÇÑ´Ù.
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
 		
-		// 2. HandlerMapping À» ÅëÇØ path ¿¡ ÇØ´çÇÏ´Â Controller ¸¦ °Ë»öÇÑ´Ù.
 		MyController ctrl = handlerMapping.getController(path);
 		
-		// 3. °Ë»öµÈ Controller ¸¦ ½ÇÇà
 		String viewName = ctrl.handleRequest(request, response);
 		
-		// 4. ViewResolver ¸¦ ÅëÇØ viewName ¿¡ ÇØ´çÇÏ´Â È­¸éÀ» °Ë»öÇÑ´Ù.
 		String view = null;
 		if (!viewName.contains(".do")) {
 			view = viewResolver.getView(viewName);
@@ -65,7 +61,6 @@ public class DispatcherServlet extends HttpServlet {
 			view = viewName;
 		}
 		
-		// 5. °Ë»öµÈ È­¸éÀ¸·Î ÀÌµ¿
 		response.sendRedirect(view);
 	}
 

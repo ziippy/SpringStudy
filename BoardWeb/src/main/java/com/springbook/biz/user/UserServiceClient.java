@@ -9,24 +9,24 @@ public class UserServiceClient {
 	
 	public static void main(String[] args) {
 		
-		// 1. Spring ÄÁÅ×ÀÌ³Ê ±¸µ¿
+		// 1. Spring
 		AbstractApplicationContext container = new GenericXmlApplicationContext("applicationContext.xml");
 		
-		// 2. Spring ÄÁÅ×ÀÌ³Ê·ÎºÎÅÍ UserServiceImpl °´Ã¼¸¦ Lookup
+		// 2. Spring -> UserServiceImpl Lookup
 		UserService userService = (UserService)container.getBean("userService");
 		
-		// 3. À¯Àú Á¶È¸ ±â´É Å×½ºÆ®
+		// 3. db
 		UserVO vo = new UserVO();
 		vo.setId("test");
 		vo.setPassword("test123");
 		UserVO user = userService.getUser(vo);
 		if (user != null) {
-			System.out.println("login ok - " + user.getName() + " ´Ô È¯¿µÇÕ´Ï´Ù.");
+			System.out.println("login ok - " + user.getName() + " ï¿½ï¿½ È¯ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
 		} else {
-			System.out.println("·Î±×ÀÎ ½ÇÆÐ");
+			System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		
-		// 5. ÄÁÅ×ÀÌ³Ê Á¾·á
+		// 5. close
 		container.close();
 	}
 }
