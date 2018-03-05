@@ -2,6 +2,7 @@ package com.springbook.biz.board;
 
 import java.util.List;
 
+import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
 public class BoardServiceClient {
@@ -11,9 +12,9 @@ public class BoardServiceClient {
 		BoardDAO boardDAO = new BoardDAO();
 		
 		BoardVO vo = new BoardVO();
-		vo.setTitle("myBatis 제목");
-		vo.setWriter("홍길동");
-		vo.setContent("myBatis 내용");
+		vo.setTitle("myBatis title");
+		vo.setWriter("writer");
+		vo.setContent("myBatis content");
 		boardDAO.insertBoard(vo);
 		
 		vo = new BoardVO();
